@@ -2,12 +2,13 @@ import Home from "./Home";
 import Car from "./car";
 import Plane from "./plane";
 import Flower from "./flower";
+import Buy from "./buy";
 import { useState } from "react";
 
 
 
 const App = () =>{
-  const mains = [1,2,3,4];
+  const mains = [1,2,3,4,5];
   const [currentMain,setCurrentMain]=useState(3);
   const handleMainClick =(main)=>{
     setCurrentMain(main);
@@ -22,6 +23,8 @@ const App = () =>{
         return <Plane></Plane>;
       case 4:
         return <Flower></Flower>;
+      case 5:
+        return <Buy></Buy>;
       default:
         return null;
     }

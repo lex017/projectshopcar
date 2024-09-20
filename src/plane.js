@@ -10,32 +10,60 @@ const Plane = () => {
 
   const product = [{
     id: 1,
-    img:'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D',
+    img:'https://corporatehelicopters.com/wp-content/uploads/EC1320T2-720x480.jpg',
     name:'Nike',
     price: 7000,
     description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
-    type:'shirt'
+    type:'helicopter'
 },{
     id: 2,
-    img:'https://plus.unsplash.com/premium_photo-1677541205130-51e60e937318?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D',
+    img:'https://www.exclusiveaircraft.co.uk/sites/default/files/gallery/Exclusive%20Aircraft%20Sales%20As350b2%20helicopter%20for%20sale_0.png',
     name:'Adidas',
     price: 5500,
     description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
-    type:'shoes'
+    type:'helicopter'
 },{
     id: 3,
-    img:'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D',
+    img:'https://static.wixstatic.com/media/7e648a_89210879aa0e4091b652e314dac3d78a~mv2.jpg/v1/crop/x_208,y_244,w_4971,h_2563/fill/w_594,h_388,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/DSC_0044_JPG.jpg',
     name:'puma',
     price: 3500,
     description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
-    type:'shoes'
+    type:'helicopter'
 },{
     id: 4,
-    img:'https://billbird.co.uk/wp-content/uploads/2023/09/Bill-Bird-Shoes-Bespoke-Orthopaedic-Shoemakers-1.jpg',
+    img:'https://cdn.animenewsnetwork.com/thumbnails/max600x600/cms/interest.2/162249/cop1.jpg',
     name:'Debo',
     price: 7500,
     description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
-    type:'shoes'
+    type:'helicopter'
+},{
+  id: 5,
+  img:'https://www.leaderluxury.com/wp-content/uploads/2023/02/Picture1-500x313.jpg',
+  name:'Nike',
+  price: 7000,
+  description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
+  type:'jet'
+},{
+  id: 6,
+  img:'https://www.diamontejets.com/wp-content/uploads/2020/10/Diamonte-Jets-challenger-605-1.jpg',
+  name:'Adidas',
+  price: 5500,
+  description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
+  type:'jet'
+},{
+  id: 7,
+  img:'https://www.evojets.com/wp-content/uploads/2019/07/used-midsize-jets-for-sale.jpg',
+  name:'puma',
+  price: 3500,
+  description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
+  type:'jet'
+},{
+  id: 8,
+  img:'https://www.thesun.co.uk/wp-content/uploads/2024/09/warning-taken-without-permission-incredible-934222272.png?strip=all&w=960',
+  name:'Debo',
+  price: 7500,
+  description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
+  type:'jet'
 }
     
   ];
@@ -145,12 +173,11 @@ const Plane = () => {
       <nav>
         <div className="nav-container">
           <a href="#">
-            <img src="/wolf.png" className="logo-nav" alt="Logo" />
+          <p className="logo-nav">Planeshop</p>
           </a>
           <div className="nav-profile">
-            <p className="nav-profile-name">Camshop</p>
+          <img src="/whitebag.png" className="logo-bag"></img>
             <div onClick={() => setCartVisible(true)} style={{ cursor: 'pointer' }} className="nav-profile-cart">
-              <i className="fa-solid fa-bag-shopping"></i>
               <div id="cartcount" className="cartcount" style={{ display: 'none' }}>
                 0
               </div>
@@ -163,8 +190,8 @@ const Plane = () => {
         <div className="sidebar">
           <input onKeyUp={searchsomething} id="txt_search" type="text" className="sidebar-search" placeholder="Search..." />
           <button onClick={() => searchproduct('all')} className="sidebar-item">All product</button>
-          <button onClick={() => searchproduct('shirt')} className="sidebar-item">Shirt</button>
-          <button onClick={() => searchproduct('shoes')} className="sidebar-item">Shoes</button>
+          <button onClick={() => searchproduct('helicopter')} className="sidebar-item">Helicopter</button>
+          <button onClick={() => searchproduct('jet')} className="sidebar-item">Jett</button>
         </div>
 
         <div id="productchoice" className="product">
@@ -223,12 +250,12 @@ const Plane = () => {
   font-family: 'Arial', sans-serif;
 }
 body {
-  background-color: #f4f4f4;
+  background-color: #212149;
 }
 nav {
   width: 100%;
   height: 70px;
-  background: linear-gradient(125deg, #e61b36, #9c1032);
+  background: linear-gradient(125deg, #2e86c1 , black);
   display: block;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -241,7 +268,15 @@ nav {
   align-items: center;
 }
 .logo-nav {
-  width: 50px;
+  width: 100px;
+  object-fit: contain;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+  color: #fff;
+  font-family: cursive;
+  font-size:30px;
+}
+  .logo-bag {
+  width: 30px;
   object-fit: contain;
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
 }
@@ -383,7 +418,7 @@ nav {
   margin-left: 20px;
 }
 .modal-img {
-  width: 300px;
+  width: 400px;
   height: 300px;
   object-fit: cover;
   border-radius: 15px;

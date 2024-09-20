@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Car = () => {
+const Flower = () => {
   const [cart, setCart] = useState([]);
   const [productIndex, setProductIndex] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
@@ -10,60 +10,60 @@ const Car = () => {
 
   const product = [{
     id: 1,
-    img:'https://static.wixstatic.com/media/b50766_6eabaac95e0649b28ed8be53e2afa995~mv2.jpg/v1/fill/w_980,h_479,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/b50766_6eabaac95e0649b28ed8be53e2afa995~mv2.jpg',
+    img:'https://www.olivia-flower.com/wp-content/uploads/2022/07/bouquet-white-rose-black-and-white-1-600x600.jpg',
     name:'Nike',
     price: 7000,
     description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
-    type:'passenger'
+    type:'white'
 },{
     id: 2,
-    img:'https://media.wltx.com/assets/WTLV/images/a013327b-d764-4817-aab4-8808c24fe8a1/a013327b-d764-4817-aab4-8808c24fe8a1_1140x641.jpg',
+    img:'https://pattaya.aprilflora.com/cdn/shop/products/IMG_2372_2.jpg?v=1599710320',
     name:'Adidas',
     price: 5500,
     description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
-    type:'passenger'
+    type:'white'
 },{
     id: 3,
-    img:'https://m.eshiptrading.com/Upload/Bt_Image/20220628104944430936407.jpg',
+    img:'https://img.lazcdn.com/g/p/cbc139fca007e664f0ea7bbe97613e38.jpg_360x360q75.jpg_.webp',
     name:'puma',
     price: 3500,
     description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
-    type:'passenger'
+    type:'white'
 },{
     id: 4,
-    img:'https://www.cruisetradenews.com/resources/uploads/2018/07/SkyPrincess-600x400.jpg',
+    img:'https://www.petalebkk.com/wp-content/uploads/2023/07/LINE_ALBUM_11523_230703_0-300x300.jpg',
     name:'Debo',
     price: 7500,
     description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
-    type:'passenger'
+    type:'white'
 },{
   id: 5,
-  img:'https://cdn.britannica.com/25/123125-050-8E6C8227/rowboat.jpg',
+  img:'https://internetflorist.b-cdn.net/v4/images_flowers/thumbs/1221439462904.webp',
   name:'Nike',
   price: 7000,
   description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
-  type:'Boat'
+  type:'red'
 },{
   id: 6,
-  img:'https://www.tessllc.us/wp-content/uploads/2020/07/yacht-post-825x510.jpg',
+  img:'https://down-th.img.susercontent.com/file/th-11134207-7r98v-lr5xebzyqpgu03',
   name:'Adidas',
   price: 5500,
   description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
-  type:'Boat'
+  type:'red'
 },{
   id: 7,
-  img:'https://cdn.boatinternational.com/convert/files/2023/08/30942590-400a-11ee-bc8e-5ddbc07249de-bunty-exterior.jpg/r%5Bwidth%5D=320/30942590-400a-11ee-bc8e-5ddbc07249de-bunty-exterior.webp',
+  img:'https://www.aflowerroom.com/wp-content/uploads/2019/12/A064_PNG.png',
   name:'puma',
   price: 3500,
   description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
-  type:'Boat'
+  type:'red'
 },{
   id: 8,
-  img:'https://www.sailandleisure.co.za/wp-content/uploads/2017/07/GettyImages-503108753-590116e33df78c545640ee88.jpg',
+  img:'https://lmwn.com/wp-content/uploads/2023/12/06-%E0%B9%80%E0%B8%97%E0%B8%A3%E0%B8%99%E0%B8%94%E0%B9%8C%E0%B8%A1%E0%B8%B9%E0%B9%80%E0%B8%95%E0%B8%A5%E0%B8%B9%E0%B8%9B%E0%B8%B5-2023-%E0%B8%A1%E0%B8%B2%E0%B9%81%E0%B8%A3%E0%B8%87%E0%B8%AA%E0%B8%B8%E0%B8%94%E0%B8%82%E0%B8%B5%E0%B8%94-LINE-MAN-%E0%B9%80%E0%B8%9C%E0%B8%A2%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%84%E0%B8%AB%E0%B8%A7%E0%B9%89%E0%B8%9E%E0%B8%A3%E0%B8%B0-%E0%B9%80%E0%B8%97%E0%B8%9E-%E0%B8%9E%E0%B8%B8%E0%B9%88%E0%B8%87%E0%B8%97%E0%B8%B0%E0%B8%A5%E0%B8%B8-660000-%E0%B8%8A%E0%B8%B4%E0%B9%89%E0%B8%99--1024x768.jpg',
   name:'Debo',
   price: 7500,
   description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
-  type:'Boat'
+  type:'red'
 }
     
   ];
@@ -140,7 +140,7 @@ const Car = () => {
           <div className="cartlist-right">
             <button onClick={() => deinitem('-', index)} className="btnc">-</button>
             <p id={`countitem${index}`} style={{ margin: '0 20px' }}>{item.count}</p>
-            <button onClick={() => deinitem('+', index)} className="btnc">+</button>
+            <button onClick={() => deinitem('+', index)} className="btnc">+</button>7
           </div>
         </div>
       ));
@@ -173,7 +173,7 @@ const Car = () => {
       <nav>
         <div className="nav-container">
           <a href="#">
-            <p className='logo-nav'>Shipshop</p>
+          <p className="logo-nav">Flowershop</p>
           </a>
           <div className="nav-profile">
           <img src="/whitebag.png" className="logo-bag"></img>
@@ -190,9 +190,9 @@ const Car = () => {
       <div className="container">
         <div className="sidebar">
           <input onKeyUp={searchsomething} id="txt_search" type="text" className="sidebar-search" placeholder="Search..." />
-          <button onClick={() => searchproduct('all')} className="sidebar-item">All ship</button>
-          <button onClick={() => searchproduct('passenger')} className="sidebar-item">Passenger Ship</button>
-          <button onClick={() => searchproduct('Boat')} className="sidebar-item">Boat</button>
+          <button onClick={() => searchproduct('all')} className="sidebar-item">All Flower</button>
+          <button onClick={() => searchproduct('white')} className="sidebar-item">white</button>
+          <button onClick={() => searchproduct('red')} className="sidebar-item">red</button>
         </div>
 
         <div id="productchoice" className="product">
@@ -492,4 +492,4 @@ nav {
   );
 };
 
-export default Car;
+export default Flower;

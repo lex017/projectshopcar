@@ -1,6 +1,7 @@
 import Home from "./Home";
 import Car from "./car";
 import Plane from "./plane";
+import Flower from "./flower";
 import { useState } from "react";
 
 
@@ -19,6 +20,8 @@ const App = () =>{
         return <Car></Car>;
       case 3:
         return <Plane></Plane>;
+      case 4:
+        return <Flower></Flower>;
       default:
         return null;
     }
@@ -30,54 +33,55 @@ const App = () =>{
           handleMainClick(main);
         }}
         className={currentMain == main ?"active-btn":"inactive-btn"} 
-        >Main {main}</button>
+        >Product {main}</button>
       ))}
       <MainContent main={currentMain}></MainContent>
       <style jsx>{`
       .app{
       text-align: center;
+      height:60px;
+      background: linear-gradient(125deg, #2e86c1 , black);
       }
       // button{
           
       //     }
-        // .active-btn{
-        // background-color:skyblue;
-        // border-radius:20px;
-        // box-shadow:5px 5px rgba(0,0,0,0.3);
-        // padding:10px 20px;
-        // margin:10px;
-        // font-size:15px;
-        // color:white;
-        // border:none;
-        // border-redius:5px;
-        // cursor:pointer;
-        // transition:background-color 0.3s;
-        // }
-        // .inactive-btn{
-        // background-color:darkblue;
-        // border-radius:20px;
-        //   box-shadow:5px 5px rgba(0,0,0,0.3);
-        //   padding:10px 20px;
-        //   margin:10px;
-        //   font-size:15px;
-        //   color:white;
-        //   border:none;
-        //   border-redius:5px;
-        //   cursor:pointer;
-        //   transition:background-color 0.3s;
-        // }
-        // .lp{
-        // background-color:brown;
-        //         border-radius:20px;
-        //         box-shadow:5px 5px rgba(0,0,0,0.3);
-        //         padding:10px 20px;
-        //         margin:5px;
-        //         font-size:15px;
-        //         color:white;
-        //         border:none;
-        //         cursor:pointer;
-        //         transition:background-color 0.3s;
-        // }
+        .active-btn{
+        background-color:skyblue;
+        box-shadow:5px 5px rgba(0,0,0,0.3);
+        padding:10px 20px;
+        margin:10px;
+        font-size:15px;
+        color:white;
+        border:none;
+  
+        cursor:pointer;
+        transition:background-color 0.3s;
+        }
+        .inactive-btn{
+        background-color:darkblue;
+        
+          box-shadow:5px 5px rgba(0,0,0,0.3);
+          padding:10px 20px;
+          margin:10px;
+          font-size:15px;
+          color:white;
+          border:none;
+
+          cursor:pointer;
+          transition:background-color 0.3s;
+        }
+        .lp{
+        background-color:brown;
+                
+                box-shadow:5px 5px rgba(0,0,0,0.3);
+                padding:10px 20px;
+                margin:5px;
+                font-size:15px;
+                color:white;
+                border:none;
+                cursor:pointer;
+                transition:background-color 0.3s;
+        }
       `}
 
       </style>

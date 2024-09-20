@@ -12,32 +12,60 @@ const Home = () => {
 
   const product = [{
     id: 1,
-    img:'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D',
-    name:'Nike',
+    img:'https://www.usnews.com/object/image/0000018b-fa28-dc80-a9ef-ffe9f8290001/01-2024-chevrolet-corvette-angular-front-jmv.JPG?update-time=1700709318771&size=responsiveGallery',
+    name:'Covet',
     price: 7000,
     description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
-    type:'shirt'
+    type:'Sport'
 },{
     id: 2,
-    img:'https://plus.unsplash.com/premium_photo-1677541205130-51e60e937318?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D',
-    name:'Adidas',
+    img:'https://miro.medium.com/v2/resize:fit:800/1*XTgPWxZfaLBefcrqOHhdqA.jpeg',
+    name:'Porche',
     price: 5500,
     description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
-    type:'shoes'
+    type:'Sport'
 },{
     id: 3,
-    img:'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D',
-    name:'puma',
+    img:'https://www.themilliardaire.com/en/wp-content/uploads/2024/06/BUGATTI_Tourbillon_1-800x600.jpg',
+    name:'Bugati',
     price: 3500,
     description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
-    type:'shoes'
+    type:'Sport'
 },{
     id: 4,
-    img:'https://billbird.co.uk/wp-content/uploads/2023/09/Bill-Bird-Shoes-Bespoke-Orthopaedic-Shoemakers-1.jpg',
-    name:'Debo',
+    img:'https://hips.hearstapps.com/hmg-prod/images/maserati-mc20-104-1599596763.jpg',
+    name:'Masarati',
     price: 7500,
     description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
-    type:'shoes'
+    type:'Sport'
+},{
+  id: 5,
+  img:'https://preview.redd.it/future-tank-should-and-will-most-likely-use-lightweight-v0-13002d63scac1.png?width=878&format=png&auto=webp&s=28560f41b0997f07e80c08cb9cce08c4ba6d633e',
+  name:'Covet',
+  price: 7000,
+  description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
+  type:'tank'
+},{
+  id: 6,
+  img:'https://cloudfront-us-east-2.images.arcpublishing.com/reuters/M3NCZORW3RIMVMY6Y2PJWX2Y4M.jpg',
+  name:'Porche',
+  price: 5500,
+  description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
+  type:'tank'
+},{
+  id: 7,
+  img:'https://m.media-amazon.com/images/I/71yctAZogxL._AC_UF1000,1000_QL80_.jpg',
+  name:'Bugati',
+  price: 3500,
+  description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
+  type:'tank'
+},{
+  id: 8,
+  img:'https://cloudfront-us-east-1.images.arcpublishing.com/archetype/FKYP34WMF5HB7ICRTBKJ7WSZ4M.png',
+  name:'Masarati',
+  price: 7500,
+  description:'nike lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e ullamcorper lorem',
+  type:'tank'
 }
     
   ];
@@ -46,6 +74,14 @@ const Home = () => {
     setFilteredProducts(product); // Initialize with full product list
   }, []);
 
+  const handlebuy = () => {
+    return(
+      <div className="modal-page">
+            <h2>My Cart</h2>
+            <div id="mycart" className="cartlist">{renderbuy()}</div>
+          </div>
+    )
+  }
   const numberWithCommas = (x) => {
     x = x.toString();
     const pattern = /(-?\d+)(\d{3})/;
@@ -54,7 +90,8 @@ const Home = () => {
     }
     return x;
   };
-
+  
+  
   const openProductdetail = (index) => {
     setProductIndex(index);
     setModalVisible(true);
@@ -122,6 +159,28 @@ const Home = () => {
       return <p>Cart is empty</p>;
     }
   };
+  const renderbuy = () => {
+    if (cart.length > 0) {
+      return cart.map((item, index) => (
+        <div className="cartlist-item" key={index}>
+          <div className="cartlist-left">
+            <img src={item.img} alt="" />
+            <div className="cartlist-detail">
+              <p style={{ fontSize: '1.5vw' }}>{item.name}</p>
+              <p style={{ fontSize: '1.2vw' }}>{numberWithCommas(item.price * item.count)}</p>
+            </div>
+          </div>
+          <div className="cartlist-right">
+            <button onClick={() => deinitem('-', index)} className="btnc">-</button>
+            <p id={`countitem${index}`} style={{ margin: '0 20px' }}>{item.count}</p>
+            <button onClick={() => deinitem('+', index)} className="btnc">+</button>
+          </div>
+        </div>
+      ));
+    } else {
+      return <p>Cart is empty</p>;
+    }
+  };
 
   const deinitem = (action, index) => {
     const updatedCart = [...cart];
@@ -147,10 +206,11 @@ const Home = () => {
       <nav>
         <div className="nav-container">
           <a href="#">
-            <img src="/wolf.png" className="logo-nav" alt="Logo" />
+            {/* <img src="/wolf.png" className="logo-nav" alt="Logo" /> */}
+            <p className="logo-nav">Carshop</p>
           </a>
           <div className="nav-profile">
-            <img ></img>
+            <img src="/whitebag.png" className="logo-bag"></img>
             <div onClick={() => setCartVisible(true)} style={{ cursor: 'pointer' }} className="nav-profile-cart">
               <i className="fa-solid fa-bag-shopping"></i>
               <div id="cartcount" className="cartcount" style={{ display: 'none' }}>
@@ -164,9 +224,9 @@ const Home = () => {
       <div className="container">
         <div className="sidebar">
           <input onKeyUp={searchsomething} id="txt_search" type="text" className="sidebar-search" placeholder="Search..." />
-          <button onClick={() => searchproduct('all')} className="sidebar-item">All product</button>
-          <button onClick={() => searchproduct('shirt')} className="sidebar-item">Shirt</button>
-          <button onClick={() => searchproduct('shoes')} className="sidebar-item">Shoes</button>
+          <button onClick={() => searchproduct('all')} className="sidebar-item">All Car</button>
+          <button onClick={() => searchproduct('Sport')} className="sidebar-item">Sport</button>
+          <button onClick={() => searchproduct('tank')} className="sidebar-item">tank</button>
         </div>
 
         <div id="productchoice" className="product">
@@ -209,7 +269,7 @@ const Home = () => {
             <div id="mycart" className="cartlist">{rendercart()}</div>
             <div className="btn-control">
               <button onClick={closemodal} className="btn">Cancel</button>
-              <button className="btn btn-buy">Buy</button>
+              <button className="btn btn-buy" onClick={handlebuy()}>Buy</button>
             </div>
           </div>
         </div>
@@ -225,12 +285,12 @@ const Home = () => {
   font-family: 'Arial', sans-serif;
 }
 body {
-  background-color: #f4f4f4;
+  background-color: #212149;
 }
 nav {
   width: 100%;
   height: 70px;
-  background: linear-gradient(125deg, #e61b36, #9c1032);
+  background: linear-gradient(125deg, #2e86c1 , black);
   display: block;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -243,7 +303,15 @@ nav {
   align-items: center;
 }
 .logo-nav {
-  width: 50px;
+  width: 100px;
+  object-fit: contain;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+  color: #fff;
+  font-family: cursive;
+  font-size:30px;
+}
+  .logo-bag {
+  width: 30px;
   object-fit: contain;
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
 }
@@ -385,7 +453,7 @@ nav {
   margin-left: 20px;
 }
 .modal-img {
-  width: 300px;
+  width: 400px;
   height: 300px;
   object-fit: cover;
   border-radius: 15px;
